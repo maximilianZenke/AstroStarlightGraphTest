@@ -14,10 +14,10 @@ export default defineConfig({
           contentRoot: "./src",
       },
       graphConfig: {
-    depth: -1,
+    depth: 10,
     repelForce: 350,
     linkDistance: 75,
-    colliderPadding: 50
+    colliderPadding: 50,
   }
   })],
 

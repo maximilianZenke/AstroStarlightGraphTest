@@ -3,6 +3,7 @@ import TagFilter from "./components/TagFilter.jsx";
 import "starlight-site-graph/styles/variables.css";
 import "../styles/global.css";
 import { PageGraph } from "starlight-site-graph/components";
+import SocialButton from "./components/SocialButton.jsx";
 import Navbar from "./components/Navbar";
 const posts = await Astro.glob("../pages/**/*.md");
 posts.sort(
@@ -17,36 +18,61 @@ let uniqueTags = Array.from(
 );
 ---
 
-<html lang="de">
+<html lang="de" data-theme="light">
   <head>
     <title>Mein Blog</title>
   </head>
-  <body class="bg-gray-50 text-gray-800 font-sans p-8">
-    <Navbar client:load />
-    <div style="height: 50px;"></div>
-
-    <h1 class="text-4xl font-bold mb-6">Alle Posts</h1>
-    <ul class="space-y-4">
-      {
-        posts.map((post) => (
-          <li class="p-4 bg-white rounded-lg shadow hover:shadow-md transition">
-            <a
-              href={post.url}
-              class="text-blue-600 hover:text-blue-800 font-medium"
-            >
-              {post.frontmatter.title}
-            </a>
-            <br />
-            <small class="text-gray-500">{post.frontmatter.date}</small>
-          </li>
-        ))
-      }
-    </ul>
-
-    <h2 class="text-2xl font-semibold mt-10 mb-4">Tags</h2>
-    <TagFilter client:load posts={posts} />
-    <div class="mt-10">
-      <PageGraph />
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <div class="mt-4">
+      <Navbar client:load />
     </div>
+    <div class="h-12"></div>
+    <main class="mx-auto w-full max-w-7xl px-2 sm:px-6 lg:px-8">
+      <section class="bg-[#D9D9D9] py-16 rounded-xl">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <h1 class="font-mono font-bold text-4xl md:text-5xl text-black mb-6">
+            Hi, I am <span style={{ color: "#F6790C" }}>Max</span>
+          </h1>
+
+          <p
+            class="font-mono text-lg md:text-xl leading-relaxed text-black mb-10"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            vero esse non molestias eos excepturi, inventore atque cupiditate.
+            Sed voluptatem quas omnis culpa, et odit. Lorem ipsum dolor sit amet
+            Angular adipisicing elit. Tenetur vero esse non molestias eos
+            excepturi, inventore atque cupiditate. Sed voluptatem quas omnis
+            culpa, et odit. Lorem ipsum dolor sit amet Angular adipisicing elit.
+            Tenetur vero esse non molestias eos excepturi, inventore atque
+            cupiditate.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-6">
+            <SocialButton
+              href="https://www.linkedin.com/in/maximilian-zenke-2a0749265/"
+              icon="linkedin"
+            />
+            <SocialButton
+              href="https://github.com/maximilianZenke"
+              icon="github"
+            />
+          </div>
+        </div>
+      </section>
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-10">
+        <h1 class="font-mono font-bold text-4xl md:text-5xl text-black mb-6">
+          This is what I do
+        </h1>
+        <PageGraph client:load />
+        <div class="h-12"></div>
+        <p
+          class="font-mono text-lg md:text-xl leading-relaxed text-black mb-10"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
+          esse non molestias eos excepturi, inventore atque cupiditate. Sed
+          voluptatem quas omnis culpa, et odit. Lorem ipsum dolor sit amet.
+        </p>
+      </div>
+    </main>
   </body>
 </html>
