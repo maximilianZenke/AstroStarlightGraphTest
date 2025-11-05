@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
-
+  base: '/Astro-Blog',
   integrations: [react(), sitegraphSitemapIntegration({
       sitemapConfig: {
           contentRoot: "./src",
